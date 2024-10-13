@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áudios para brincar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Áudios Whatsapp</h1>
+    <div class="keys">
+
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">Bom dia</span>
+        </div>
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">E o pix?</span>
+        </div>
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">Eu tentei</span>
+        </div>
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">Um homem, uma máquina</span>
+        </div>
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">Cuidado - Matuê</span>
+        </div>
+        <div data-key="72" class="key">
+            <kbd>H</kbd>
+            <span class="sound">Zé da manga</span>
+        </div>
+        <div data-key="74" class="key">
+            <kbd>J</kbd>
+            <span class="sound">Calma calabreso</span>
+        </div>
+        <div data-key="75" class="key">
+            <kbd>K</kbd>
+            <span class="sound">Apanhar e ficar calado</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">AmoungUs</span>
+        </div>
+        <div data-key="186" class="key">
+            <kbd>Ç</kbd>
+            <span class="sound">Vou nada</span>
+        </div>
+        <div data-key="90" class="key">
+            <kbd>Z</kbd>
+            <span class="sound">Que isso moreno</span>
+        </div>
+        <div data-key="88" class="key">
+            <kbd>X</kbd>
+            <span class="sound">Bom diaaa</span>
+        </div>
+        <div data-key="67" class="key">
+            <kbd>C</kbd>
+            <span class="sound">Me mata de uma vez</span>
+        </div>
+        <div data-key="86" class="key">
+            <kbd>V</kbd>
+            <span class="sound">A pia tá cheia de louça</span>
+        </div>
+        <div data-key="66" class="key">
+            <kbd>B</kbd>
+            <span class="sound">Risada Kiko</span>
+        </div>
+        <div data-key="78" class="key">
+            <kbd>N</kbd>
+            <span class="sound">Sax sexy</span>
+        </div>
+        <div data-key="77" class="key">
+            <kbd>M</kbd>
+            <span class="sound">Risadinha</span>
+        </div>
+        <div data-key="87" class="key">
+            <kbd>???</kbd>
+            <span class="sound">???</span>
+        </div>
+
+    </div>
+
+    <div class="pause">
+        <div data-key="32">
+            <h2>Aperter ESPAÇO para pausar!</h2>
+        </div>
+    </div>
+
+    <audio data-key="65" src="sons/bom-dia-motivacional.mp3"></audio>
+    <audio  data-key="83" src="sons/e-o-pix-nada-ainda.mp3"></audio>
+    <audio data-key="68" src="sons/eu-tentei.mp3"></audio>
+    <audio data-key="70" src="sons/o-homem-uma-maquina-uma-besta-enjaulada.mp3"></audio>
+    <audio data-key="71" src="sons/cuidado-com-a-pika-mano.mp3"></audio>
+    <audio data-key="72" src="sons/ze-da-manga_G3QwWGi.mp3"></audio>
+    <audio data-key="74" src="sons/calma-calabreso.mp3"></audio>
+    <audio data-key="75" src="sons/tmpyhr2sh8l.mp3"></audio>
+    <audio data-key="76" src="sons/among-us-role-reveal-sound.mp3"></audio>
+    <audio data-key="186" src="sons/vou-nada.mp3"></audio>
+    <audio data-key="90" src="sons/que-isso-moreno.mp3"></audio>
+    <audio data-key="88" src="sons/bom-diaaaaaaaaaaaaaaaa.mp3"></audio>
+    <audio data-key="67" src="sons/me-mata-de-uma-vez.mp3"></audio>
+    <audio data-key="86" src="sons/se-eu-largar-o-freio-oficial.mp3"></audio>
+    <audio data-key="66" src="sons/a-risada-do-kiko.mp3"></audio>
+    <audio data-key="78" src="sons/george-micael-wham-careless-whisper-1.mp3"></audio>
+    <audio data-key="77" src="sons/sabe-porque-as-meninas-dao-maior-valor-na-risada-de-ladrao-mp3cut.mp3"></audio>
+    <audio data-key="87" src="sons/gemidos-kkkkk.mp3"></audio>
+    <audio data-key="193" src="sons/gemidos-kkkkk.mp3"></audio>
+
+
+    <script>
+        function playSound(e) {
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+            if(e.keyCode === 32) {
+                const sons = document.querySelectorAll('audio');
+                sons.forEach(som => som.pause())
+            return;
+            }
+            //
+            if(!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            key.classList.add('playing')
+        }
+            //
+            function removeTransition(e) {
+                if(e.propertyName !== "transform") 
+                return
+                this.classList.remove('playing');
+            }
+
+            const keys = document.querySelectorAll('.key');
+                keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+
+        window.addEventListener('keydown', playSound);
+
+    </script>
+    
+</body>
+</html>
